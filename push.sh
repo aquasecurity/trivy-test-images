@@ -250,3 +250,13 @@ ubuntu:bionic-20190807 - 18.04.3 LTS (Bionic Beaver)
 EOS
 
 crane copy ubuntu@sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90 ${TEST_IMAGE}:ubuntu1804
+
+cat <<EOS
+
+#####################################
+vulnimage - knqyf263/vuln-image:1.2.3
+#####################################
+
+EOS
+
+crane copy knqyf263/vuln-image@sha256:1e8b199249d6d0ef3419ddc6eda2348d9fbdb10d350d3bb70aa98e87faa227c9 ${TEST_IMAGE}:vulnimage
