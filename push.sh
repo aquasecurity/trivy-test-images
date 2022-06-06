@@ -220,3 +220,13 @@ rockylinux:8.5
 EOS
 
 crane copy rockylinux@sha256:5fed5497b568bcf7a90a00965987fc099edbcf44b1179a5ef6d4b47758281ca5 ${TEST_IMAGE}:rockylinux-85
+
+cat <<EOS
+
+###########
+ubi:7.7-140
+###########
+
+EOS
+
+crane copy registry.access.redhat.com/ubi7/ubi@sha256:ef06b1b4d4b8e1c4fc5cb8a01477d27c11ac2364b966ab6341257d6965ad0846 ${TEST_IMAGE}:ubi7
