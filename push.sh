@@ -129,7 +129,7 @@ centos:7.6.1810
 
 EOS
 
-crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6${TEST_IMAGE}:centos6
+crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6${TEST_IMAGE}:centos7
 
 cat <<EOS
 
@@ -139,4 +139,4 @@ debian:buster-20190910
 
 EOS
 
-crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345${TEST_IMAGE}:centos6
+crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345${TEST_IMAGE}:debian-buster
