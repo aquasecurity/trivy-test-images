@@ -239,4 +239,14 @@ ubuntu:xenial-20190720 - Ubuntu 16.04.6 LTS (Xenial Xerus)
 
 EOS
 
-crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9  ${TEST_IMAGE}:ubuntu1604
+crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9 ${TEST_IMAGE}:ubuntu1604
+
+cat <<EOS
+
+####################################################
+ubuntu:bionic-20190807 - 18.04.3 LTS (Bionic Beaver)
+####################################################
+
+EOS
+
+crane copy ubuntu@sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90 ${TEST_IMAGE}:ubuntu1804
