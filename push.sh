@@ -230,3 +230,13 @@ ubi:7.7-140
 EOS
 
 crane copy registry.access.redhat.com/ubi7/ubi@sha256:ef06b1b4d4b8e1c4fc5cb8a01477d27c11ac2364b966ab6341257d6965ad0846 ${TEST_IMAGE}:ubi7
+
+cat <<EOS
+
+##########################################################
+ubuntu:xenial-20190720 - Ubuntu 16.04.6 LTS (Xenial Xerus)
+##########################################################
+
+EOS
+
+crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9  ${TEST_IMAGE}:ubuntu1604
