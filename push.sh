@@ -180,3 +180,14 @@ fedora:35
 EOS
 
 crane copy fedora@sha256:f1e3a29da8990568c1da6a460cf9658ee7e9b409aa39c2aded67f7ac1dfe7e8a ${TEST_IMAGE}:fedora35
+
+cat <<EOS
+
+############################################
+cblmariner.azurecr.io/base/core:1.0.20220122
+############################################
+
+EOS
+
+crane copy cblmariner.azurecr.io/base/core@sha256:aae34b1787c1dab3adcc72c45f730bf49483cdd04ed62a32080e6e82cfaf91bf ${TEST_IMAGE}:mariner-1.0
+
