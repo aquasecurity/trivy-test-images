@@ -93,10 +93,110 @@ crane copy quay.io/fluentd_elasticsearch/fluentd@sha256:54716d825ec9791ffb403ac1
 
 cat <<EOS
 
-########################################
-amazonlinux:1 - Amazon Linux AMI 2018.03
-########################################
+#########################################################
+amazonlinux:2018.03.0.20190826 - Amazon Linux AMI 2018.03
+#########################################################
 
 EOS
 
-crane copy amazonlinux@sha256:5ded99e84532e28bbcf5ad466aeddc54eca2622a21e6f393cc6469c6ca8b1d2b ${TEST_IMAGE}:amazon-1
+crane copy amazonlinux@sha256:29bdb2208f371f33ef2eea91282e4df0b113cd495ce4f6368b1b6ddf5ca8121e ${TEST_IMAGE}:amazon-1
+
+cat <<EOS
+
+#########################################
+amazonlinux:2.0.20190508 - Amazon Linux 2
+#########################################
+
+EOS
+
+crane copy amazonlinux@sha256:730fae68c6a180e8006443b0f090e56419da5ceb5d11250d96e627660ffbc674 ${TEST_IMAGE}:amazon-2
+
+cat <<EOS
+
+########
+centos:6
+########
+
+EOS
+
+crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133 ${TEST_IMAGE}:centos6
+
+cat <<EOS
+
+###############
+centos:7.6.1810
+###############
+
+EOS
+
+crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6 ${TEST_IMAGE}:centos7
+
+cat <<EOS
+
+######################
+debian:buster-20190910
+######################
+
+EOS
+
+crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345 ${TEST_IMAGE}:debian-buster
+
+cat <<EOS
+
+#######################
+debian:stretch-20190812
+#######################
+
+EOS
+
+crane copy debian@sha256:94a5c04481bb50a4f34ebbb105e39388700202a6e34cb41b9b9afdaca854567c ${TEST_IMAGE}:debian-stretch
+
+cat <<EOS
+
+######################
+gcr.io/distroless/base
+######################
+
+EOS
+
+crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5f9280c05d3e4fe57c308be6ea ${TEST_IMAGE}:distroless-base
+
+cat <<EOS
+
+######################
+gcr.io/distroless/python2.7
+######################
+
+EOS
+
+crane copy gcr.io/distroless/python2.7@sha256:c2218251f7e76f1d3f2ea63cf71f24c9805b0ba5eb8ff0aa8ea175b10ca8293b ${TEST_IMAGE}:distroless-python27
+
+cat <<EOS
+
+#########
+fedora:35
+#########
+
+EOS
+
+crane copy fedora@sha256:f1e3a29da8990568c1da6a460cf9658ee7e9b409aa39c2aded67f7ac1dfe7e8a ${TEST_IMAGE}:fedora35
+
+cat <<EOS
+
+############################################
+cblmariner.azurecr.io/base/core:1.0.20220122
+############################################
+
+EOS
+
+crane copy cblmariner.azurecr.io/base/core@sha256:aae34b1787c1dab3adcc72c45f730bf49483cdd04ed62a32080e6e82cfaf91bf ${TEST_IMAGE}:mariner-1.0
+
+cat <<EOS
+
+############################
+docker.io/opensuse/leap:15.1
+############################
+
+EOS
+
+crane copy opensuse/leap@sha256:66075abcd272f619a86aa115b3040735c42dd18fcab784754e0eb798b56de6f5 ${TEST_IMAGE}:opensuse-leap-151
