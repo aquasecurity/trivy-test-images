@@ -93,13 +93,13 @@ crane copy quay.io/fluentd_elasticsearch/fluentd@sha256:54716d825ec9791ffb403ac1
 
 cat <<EOS
 
-########################################
-amazonlinux:1 - Amazon Linux AMI 2018.03
-########################################
+#########################################################
+amazonlinux:2018.03.0.20190826 - Amazon Linux AMI 2018.03
+#########################################################
 
 EOS
 
-crane copy amazonlinux@sha256:5ded99e84532e28bbcf5ad466aeddc54eca2622a21e6f393cc6469c6ca8b1d2b ${TEST_IMAGE}:amazon-1
+crane copy amazonlinux@sha256:29bdb2208f371f33ef2eea91282e4df0b113cd495ce4f6368b1b6ddf5ca8121e ${TEST_IMAGE}:amazon-1
 
 cat <<EOS
 
