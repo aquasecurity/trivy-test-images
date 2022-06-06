@@ -110,3 +110,13 @@ amazonlinux:2.0.20190508 - Amazon Linux 2
 EOS
 
 crane copy amazonlinux@sha256:730fae68c6a180e8006443b0f090e56419da5ceb5d11250d96e627660ffbc674 ${TEST_IMAGE}:amazon-2
+
+cat <<EOS
+
+########
+centos:6
+########
+
+EOS
+
+crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133${TEST_IMAGE}:centos6
