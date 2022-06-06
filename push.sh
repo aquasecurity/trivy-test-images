@@ -10,6 +10,22 @@ TEST_IMAGE=ghcr.io/aquasecurity/trivy-test-images
 
 cat <<EOS
 
+#############################
+Spring4Shell (CVE-2022-22965)
+#############################
+
+EOS
+
+docker build --target jre11 -t ${TEST_IMAGE}:spring4shell-jre11 spring4shell
+docker push ${TEST_IMAGE}:spring4shell-jre11
+docker rmi -f ${TEST_IMAGE}:spring4shell-jre11
+
+docker build --target jre8 -t ${TEST_IMAGE}:spring4shell-jre8 spring4shell
+docker push ${TEST_IMAGE}:spring4shell-jre8
+docker rmi -f ${TEST_IMAGE}:spring4shell-jre8
+
+cat <<EOS
+
 ######################
 almalinux:8.5-20211112
 ######################
