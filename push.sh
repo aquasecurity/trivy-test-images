@@ -140,3 +140,13 @@ debian:buster-20190910
 EOS
 
 crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345${TEST_IMAGE}:debian-buster
+
+cat <<EOS
+
+#######################
+debian:stretch-20190812
+#######################
+
+EOS
+
+crane copy debian@sha256:94a5c04481bb50a4f34ebbb105e39388700202a6e34cb41b9b9afdaca854567c${TEST_IMAGE}:debian-stretch
