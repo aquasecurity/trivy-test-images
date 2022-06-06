@@ -210,3 +210,13 @@ photon:3.0-20190823
 EOS
 
 crane copy photon@sha256:9f6284dd3794e60f3d97a446b41a50bbaf3a2bf12f5f654a35d66c41306559ba ${TEST_IMAGE}:photon-30
+
+cat <<EOS
+
+##############
+rockylinux:8.5
+##############
+
+EOS
+
+crane copy rockylinux@sha256:5fed5497b568bcf7a90a00965987fc099edbcf44b1179a5ef6d4b47758281ca5 ${TEST_IMAGE}:rockylinux-85
