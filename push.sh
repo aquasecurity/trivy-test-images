@@ -46,3 +46,15 @@ ghcr.io/distroless/git:20220412
 EOS
 
 crane copy ghcr.io/distroless/git@sha256:107c3bcf9a5d92c88e1085cb949d247ebe95cfbf6235d4a4307d129d2874de71 ${TEST_IMAGE}:alpine-distroless
+
+cat <<EOS
+
+####################
+busybox + Cargo.lock
+####################
+
+EOS
+
+docker build -t ${TEST_IMAGE}:busybox-with-lockfile busybox-with-lockfile
+docker push ${TEST_IMAGE}:busybox-with-lockfile
+docker rmi -f ${TEST_IMAGE}:busybox-with-lockfile
