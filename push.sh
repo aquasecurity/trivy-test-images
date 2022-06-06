@@ -119,7 +119,7 @@ centos:6
 
 EOS
 
-crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133${TEST_IMAGE}:centos6
+crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133 ${TEST_IMAGE}:centos6
 
 cat <<EOS
 
@@ -129,7 +129,7 @@ centos:7.6.1810
 
 EOS
 
-crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6${TEST_IMAGE}:centos7
+crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6 ${TEST_IMAGE}:centos7
 
 cat <<EOS
 
@@ -139,7 +139,7 @@ debian:buster-20190910
 
 EOS
 
-crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345${TEST_IMAGE}:debian-buster
+crane copy debian@sha256:e25b64a9cf82c72080074d6b1bba7329cdd752d51574971fd37731ed164f3345 ${TEST_IMAGE}:debian-buster
 
 cat <<EOS
 
@@ -149,7 +149,7 @@ debian:stretch-20190812
 
 EOS
 
-crane copy debian@sha256:94a5c04481bb50a4f34ebbb105e39388700202a6e34cb41b9b9afdaca854567c${TEST_IMAGE}:debian-stretch
+crane copy debian@sha256:94a5c04481bb50a4f34ebbb105e39388700202a6e34cb41b9b9afdaca854567c ${TEST_IMAGE}:debian-stretch
 
 cat <<EOS
 
@@ -159,7 +159,7 @@ gcr.io/distroless/base
 
 EOS
 
-crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5f9280c05d3e4fe57c308be6ea${TEST_IMAGE}:distroless-base
+crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5f9280c05d3e4fe57c308be6ea ${TEST_IMAGE}:distroless-base
 
 cat <<EOS
 
@@ -169,4 +169,14 @@ gcr.io/distroless/python2.7
 
 EOS
 
-crane copy gcr.io/distroless/python2.7@sha256:c2218251f7e76f1d3f2ea63cf71f24c9805b0ba5eb8ff0aa8ea175b10ca8293b${TEST_IMAGE}:distroless-python27
+crane copy gcr.io/distroless/python2.7@sha256:c2218251f7e76f1d3f2ea63cf71f24c9805b0ba5eb8ff0aa8ea175b10ca8293b ${TEST_IMAGE}:distroless-python27
+
+cat <<EOS
+
+#########
+fedora:35
+#########
+
+EOS
+
+crane copy fedora@sha256:f1e3a29da8990568c1da6a460cf9658ee7e9b409aa39c2aded67f7ac1dfe7e8a ${TEST_IMAGE}:fedora35
