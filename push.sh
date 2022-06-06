@@ -100,3 +100,13 @@ amazonlinux:1 - Amazon Linux AMI 2018.03
 EOS
 
 crane copy amazonlinux@sha256:5ded99e84532e28bbcf5ad466aeddc54eca2622a21e6f393cc6469c6ca8b1d2b ${TEST_IMAGE}:amazon-1
+
+cat <<EOS
+
+#########################################
+amazonlinux:2.0.20190508 - Amazon Linux 2
+#########################################
+
+EOS
+
+crane copy amazonlinux@sha256:730fae68c6a180e8006443b0f090e56419da5ceb5d11250d96e627660ffbc674 ${TEST_IMAGE}:amazon-2
