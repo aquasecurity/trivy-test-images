@@ -74,3 +74,13 @@ quay.io/fluentd_elasticsearch/fluentd:v2.9.0
 EOS
 
 crane copy quay.io/fluentd_elasticsearch/fluentd@sha256:54716d825ec9791ffb403ac17a1e82159c98ac6161e02b2a054595ad01aa6726 ${TEST_IMAGE}:fluentd-multiple-lockfiles
+
+cat <<EOS
+
+########################################
+amazonlinux:1 - Amazon Linux AMI 2018.03
+########################################
+
+EOS
+
+crane copy amazonlinux@sha256:5ded99e84532e28bbcf5ad466aeddc54eca2622a21e6f393cc6469c6ca8b1d2b ${TEST_IMAGE}:amazon-1
