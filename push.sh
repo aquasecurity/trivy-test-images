@@ -160,3 +160,13 @@ gcr.io/distroless/base
 EOS
 
 crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5f9280c05d3e4fe57c308be6ea${TEST_IMAGE}:distroless-base
+
+cat <<EOS
+
+######################
+gcr.io/distroless/python2.7
+######################
+
+EOS
+
+crane copy gcr.io/distroless/python2.7@sha256:c2218251f7e76f1d3f2ea63cf71f24c9805b0ba5eb8ff0aa8ea175b10ca8293b${TEST_IMAGE}:distroless-python27
