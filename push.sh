@@ -120,3 +120,13 @@ centos:6
 EOS
 
 crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133${TEST_IMAGE}:centos6
+
+cat <<EOS
+
+###############
+centos:7.6.1810
+###############
+
+EOS
+
+crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6${TEST_IMAGE}:centos6
