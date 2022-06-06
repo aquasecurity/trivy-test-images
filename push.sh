@@ -200,3 +200,13 @@ docker.io/opensuse/leap:15.1
 EOS
 
 crane copy opensuse/leap@sha256:66075abcd272f619a86aa115b3040735c42dd18fcab784754e0eb798b56de6f5 ${TEST_IMAGE}:opensuse-leap-151
+
+cat <<EOS
+
+###################
+photon:3.0-20190823
+###################
+
+EOS
+
+crane copy photon@sha256:9f6284dd3794e60f3d97a446b41a50bbaf3a2bf12f5f654a35d66c41306559ba ${TEST_IMAGE}:photon-30
