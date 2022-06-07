@@ -153,23 +153,23 @@ crane copy debian@sha256:94a5c04481bb50a4f34ebbb105e39388700202a6e34cb41b9b9afda
 
 cat <<EOS
 
-######################
-gcr.io/distroless/base
-######################
+##############################################################################################
+gcr.io/distroless/base@sha256:e37cf3289c1332c5123cbf419a1657c8dad0811f2f8572433b668e13747718f8
+##############################################################################################
 
-EOS
+EOS 
 
-crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5f9280c05d3e4fe57c308be6ea ${TEST_IMAGE}:distroless-base
+crane copy gcr.io/distroless/base@sha256:e37cf3289c1332c5123cbf419a1657c8dad0811f2f8572433b668e13747718f8 ${TEST_IMAGE}:distroless-base
 
 cat <<EOS
 
-###########################
-gcr.io/distroless/python2.7
-###########################
+###################################################################################################
+gcr.io/distroless/python2.7@sha256:fdc537f2018052f6ae7ccd34fadcbc00e53e6900ed8c43ef09af481009c99eb2
+###################################################################################################
 
 EOS
 
-crane copy gcr.io/distroless/python2.7@sha256:c2218251f7e76f1d3f2ea63cf71f24c9805b0ba5eb8ff0aa8ea175b10ca8293b ${TEST_IMAGE}:distroless-python27
+crane copy gcr.io/distroless/python2.7@sha256:fdc537f2018052f6ae7ccd34fadcbc00e53e6900ed8c43ef09af481009c99eb2 ${TEST_IMAGE}:distroless-python27
 
 cat <<EOS
 
