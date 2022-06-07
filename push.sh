@@ -119,7 +119,7 @@ centos:6
 
 EOS
 
-crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133 ${TEST_IMAGE}:centos6
+crane copy centos@sha256:a93df2e96e07f56ea48f215425c6f1673ab922927894595bb5c0ee4c5a955133 ${TEST_IMAGE}:centos-6
 
 cat <<EOS
 
@@ -129,7 +129,7 @@ centos:7.6.1810
 
 EOS
 
-crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6 ${TEST_IMAGE}:centos7
+crane copy centos@sha256:62d9e1c2daa91166139b51577fe4f4f6b4cc41a3a2c7fc36bd895e2a17a3e4e6 ${TEST_IMAGE}:centos-7
 
 cat <<EOS
 
@@ -219,7 +219,7 @@ rockylinux:8.5
 
 EOS
 
-crane copy rockylinux@sha256:5fed5497b568bcf7a90a00965987fc099edbcf44b1179a5ef6d4b47758281ca5 ${TEST_IMAGE}:rockylinux-85
+crane copy rockylinux@sha256:5fed5497b568bcf7a90a00965987fc099edbcf44b1179a5ef6d4b47758281ca5 ${TEST_IMAGE}:rockylinux-8
 
 cat <<EOS
 
@@ -229,7 +229,7 @@ ubi:7.7-140
 
 EOS
 
-crane copy registry.access.redhat.com/ubi7/ubi@sha256:ef06b1b4d4b8e1c4fc5cb8a01477d27c11ac2364b966ab6341257d6965ad0846 ${TEST_IMAGE}:ubi7
+crane copy registry.access.redhat.com/ubi7/ubi@sha256:ef06b1b4d4b8e1c4fc5cb8a01477d27c11ac2364b966ab6341257d6965ad0846 ${TEST_IMAGE}:ubi-7
 
 cat <<EOS
 
@@ -239,7 +239,7 @@ ubuntu:xenial-20190720 - Ubuntu 16.04.6 LTS (Xenial Xerus)
 
 EOS
 
-crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9 ${TEST_IMAGE}:ubuntu1604
+crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9 ${TEST_IMAGE}:ubuntu-1604
 
 cat <<EOS
 
@@ -249,7 +249,7 @@ ubuntu:bionic-20190807 - 18.04.3 LTS (Bionic Beaver)
 
 EOS
 
-crane copy ubuntu@sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90 ${TEST_IMAGE}:ubuntu1804
+crane copy ubuntu@sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90 ${TEST_IMAGE}:ubuntu-1804
 
 cat <<EOS
 
@@ -269,7 +269,7 @@ oraclelinux:8.0
 
 EOS
 
-crane copy oraclelinux@sha256:157ec47eb5bfcb428432ca5365c6bf045189b68fbc62ffde7566dd66db1dca6d ${TEST_IMAGE}:oraclelinux8
+crane copy oraclelinux@sha256:157ec47eb5bfcb428432ca5365c6bf045189b68fbc62ffde7566dd66db1dca6d ${TEST_IMAGE}:oraclelinux-8
 
 cat <<EOS
 
