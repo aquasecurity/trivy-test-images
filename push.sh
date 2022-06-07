@@ -260,3 +260,13 @@ vulnimage - knqyf263/vuln-image:1.2.3
 EOS
 
 crane copy knqyf263/vuln-image@sha256:1e8b199249d6d0ef3419ddc6eda2348d9fbdb10d350d3bb70aa98e87faa227c9 ${TEST_IMAGE}:vulnimage
+
+cat <<EOS
+
+###############
+oraclelinux:8.0
+###############
+
+EOS
+
+crane copy oraclelinux@sha256:157ec47eb5bfcb428432ca5365c6bf045189b68fbc62ffde7566dd66db1dca6d ${TEST_IMAGE}:oraclelinux8
