@@ -179,7 +179,7 @@ fedora:35
 
 EOS
 
-crane copy fedora@sha256:f1e3a29da8990568c1da6a460cf9658ee7e9b409aa39c2aded67f7ac1dfe7e8a ${TEST_IMAGE}:fedora35
+crane copy fedora@sha256:f1e3a29da8990568c1da6a460cf9658ee7e9b409aa39c2aded67f7ac1dfe7e8a ${TEST_IMAGE}:fedora-35
 
 cat <<EOS
 
