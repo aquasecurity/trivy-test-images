@@ -163,9 +163,9 @@ crane copy gcr.io/distroless/base@sha256:6bf7a69660340caf6d227c9dc4ff5ca2028beb5
 
 cat <<EOS
 
-######################
+###########################
 gcr.io/distroless/python2.7
-######################
+###########################
 
 EOS
 
