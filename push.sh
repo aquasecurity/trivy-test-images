@@ -59,6 +59,17 @@ crane copy alpine@sha256:72c42ed48c3a2db31b7dafe17d275b634664a708d901ec9fd57b152
 
 cat <<EOS
 
+###########
+alpine:3.15
+###########
+
+EOS
+
+crane copy alpine@sha256:4edbd2beb5f78b1014028f4fbb99f3237d9561100b6881aabbf5acce2c4f9454 ${TEST_IMAGE}/alpine:3.15
+
+
+cat <<EOS
+
 ###############################
 ghcr.io/distroless/git:20220412
 ###############################
