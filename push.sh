@@ -279,4 +279,4 @@ suse-15.3: suse/sle15:15.3.17.8.16
 
 EOS
 
-crane copy registry.suse.com/suse/sle15@sha256:3c0b843c0d669e7851a65cea416644b7eefba03ea5b279ae8a2b82c29c61cc4b ${TEST_IMAGE}:suse-15.3
+crane copy registry.suse.com/suse/sle15@sha256:3c0b843c0d669e7851a65cea416644b7eefba03ea5b279ae8a2b82c29c61cc4b ${TEST_IMAGE}:suse-15.3_ndb
