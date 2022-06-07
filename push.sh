@@ -37,24 +37,24 @@ crane copy almalinux@sha256:08042694fffd61e6a0b3a22dadba207c8937977915ff6b1879ad
 
 cat <<EOS
 
-##########
-alpine:3.9
-##########
+############
+alpine:3.9.4
+############
 
 EOS
 
-crane copy alpine@sha256:414e0518bb9228d35e4cd5165567fb91d26c6a214e9c95899e1e056fcd349011 ${TEST_IMAGE}:alpine-39
-	
+crane copy alpine@sha256:7746df395af22f04212cd25a92c1d6dbc5a06a0ca9579a229ef43008d4d1302a ${TEST_IMAGE}:alpine-39
+
 
 cat <<EOS
 
-###########
-alpine:3.10
-###########
+#############
+alpine:3.10.2
+#############
 
 EOS
 
-crane copy alpine@sha256:451eee8bedcb2f029756dc3e9d73bab0e7943c1ac55cff3a4861c52a0fdd3e98 ${TEST_IMAGE}:alpine-310
+crane copy alpine@sha256:72c42ed48c3a2db31b7dafe17d275b634664a708d901ec9fd57b1529280f01fb ${TEST_IMAGE}:alpine-310
 
 
 cat <<EOS
