@@ -200,3 +200,73 @@ docker.io/opensuse/leap:15.1
 EOS
 
 crane copy opensuse/leap@sha256:66075abcd272f619a86aa115b3040735c42dd18fcab784754e0eb798b56de6f5 ${TEST_IMAGE}:opensuse-leap-151
+
+cat <<EOS
+
+###################
+photon:3.0-20190823
+###################
+
+EOS
+
+crane copy photon@sha256:9f6284dd3794e60f3d97a446b41a50bbaf3a2bf12f5f654a35d66c41306559ba ${TEST_IMAGE}:photon-30
+
+cat <<EOS
+
+##############
+rockylinux:8.5
+##############
+
+EOS
+
+crane copy rockylinux@sha256:5fed5497b568bcf7a90a00965987fc099edbcf44b1179a5ef6d4b47758281ca5 ${TEST_IMAGE}:rockylinux-85
+
+cat <<EOS
+
+###########
+ubi:7.7-140
+###########
+
+EOS
+
+crane copy registry.access.redhat.com/ubi7/ubi@sha256:ef06b1b4d4b8e1c4fc5cb8a01477d27c11ac2364b966ab6341257d6965ad0846 ${TEST_IMAGE}:ubi7
+
+cat <<EOS
+
+##########################################################
+ubuntu:xenial-20190720 - Ubuntu 16.04.6 LTS (Xenial Xerus)
+##########################################################
+
+EOS
+
+crane copy ubuntu@sha256:97b54e5692c27072234ff958a7442dde4266af21e7b688e7fca5dc5acc8ed7d9 ${TEST_IMAGE}:ubuntu1604
+
+cat <<EOS
+
+####################################################
+ubuntu:bionic-20190807 - 18.04.3 LTS (Bionic Beaver)
+####################################################
+
+EOS
+
+crane copy ubuntu@sha256:d1d454df0f579c6be4d8161d227462d69e163a8ff9d20a847533989cf0c94d90 ${TEST_IMAGE}:ubuntu1804
+
+cat <<EOS
+
+#####################################
+vulnimage - knqyf263/vuln-image:1.2.3
+#####################################
+
+EOS
+
+crane copy knqyf263/vuln-image@sha256:1e8b199249d6d0ef3419ddc6eda2348d9fbdb10d350d3bb70aa98e87faa227c9 ${TEST_IMAGE}:vulnimage
+
+cat <<EOS
+
+###############
+oraclelinux:8.0
+###############
+
+EOS
+
+crane copy oraclelinux@sha256:157ec47eb5bfcb428432ca5365c6bf045189b68fbc62ffde7566dd66db1dca6d ${TEST_IMAGE}:oraclelinux8
