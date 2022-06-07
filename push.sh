@@ -26,6 +26,19 @@ docker rmi -f ${TEST_IMAGE}:spring4shell-jre8
 
 cat <<EOS
 
+##########
+containerd
+##########
+
+EOS
+
+docker build -t ${TEST_IMAGE}/containerd:latest containerd
+docker push ${TEST_IMAGE}/containerd:latest
+docker rmi -f ${TEST_IMAGE}/containerd:latest
+
+
+cat <<EOS
+
 ######################
 almalinux:8.5-20211112
 ######################
