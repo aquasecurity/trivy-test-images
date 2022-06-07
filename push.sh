@@ -193,13 +193,13 @@ crane copy cblmariner.azurecr.io/base/core@sha256:aae34b1787c1dab3adcc72c45f730b
 
 cat <<EOS
 
-############################
-docker.io/opensuse/leap:15.1
-############################
+#############################################
+registry.opensuse.org/opensuse/leap:15.1.3.67
+#############################################
 
 EOS
 
-crane copy opensuse/leap@sha256:66075abcd272f619a86aa115b3040735c42dd18fcab784754e0eb798b56de6f5 ${TEST_IMAGE}:opensuse-leap-151
+crane copy registry.opensuse.org/opensuse/leap@sha256:df3070b577cbdfd84dfb30d5ae86e58b6f377b1fc5368cebaec753d8013e8442 ${TEST_IMAGE}:opensuse-leap-151
 
 cat <<EOS
 
