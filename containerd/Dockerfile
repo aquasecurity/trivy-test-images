@@ -1,8 +1,7 @@
 FROM ghcr.io/westonsteimel/containerd:1.6.1 as source
 
 FROM alpine
-COPY --from=source /usr/local/bin/ /usr/local/bin/
+COPY --from=source /usr/local/bin/containerd /usr/local/bin/
 RUN apk add bash
-RUN ls /usr/local/bin
 ENTRYPOINT ["/usr/local/bin/containerd"]
 CMD ["--help"] 
