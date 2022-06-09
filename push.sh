@@ -313,3 +313,14 @@ suse-15.3: suse/sle15:15.3.17.8.16
 EOS
 
 crane copy registry.suse.com/suse/sle15@sha256:3c0b843c0d669e7851a65cea416644b7eefba03ea5b279ae8a2b82c29c61cc4b ${TEST_IMAGE}:suse-15.3_ndb
+
+
+cat <<EOS
+
+###############################
+archlinux:base-20220529.0.58327
+###############################
+
+EOS
+
+crane copy archlinux@sha256:2bfe247c46221b0770325d69ec195b50455b2865588665e6926b2d1168982e67 ${TEST_IMAGE}:archlinux
