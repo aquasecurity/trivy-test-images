@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  TEST_IMAGE: 'ghcr.io/dmitriylewen/trivy-test-images' # used in Makefile
+  TEST_IMAGE: 'ghcr.io/${{ github.repository_owner }}/trivy-test-images' # used in Makefile
   GH_USER: "aqua-bot"
 
 jobs:
