@@ -1,3 +1,7 @@
+ifndef TEST_IMAGE
+    export TEST_IMAGE=ghcr.io/dmitriylewen/trivy-test-images
+endif
+
 build-busybox:
 	docker build -t $(TEST_IMAGE):busybox-with-lockfile busybox-with-lockfile
 	docker push $(TEST_IMAGE):busybox-with-lockfile
@@ -16,5 +20,5 @@ build-spring4shell:
 	docker push $(TEST_IMAGE):spring4shell-jre8
 	docker rmi -f $(TEST_IMAGE):spring4shell-jre8
 
-push-crane-images:
-	./push-crane-images.sh
+copy-images:
+	./copy-images.sh
