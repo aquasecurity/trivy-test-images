@@ -1,5 +1,5 @@
 ifndef TEST_IMAGE
-    export TEST_IMAGE=ghcr.io/dmitriylewen/trivy-test-images
+    export TEST_IMAGE=ghcr.io/aquasecurity/trivy-test-images
 endif
 
 build-busybox:
