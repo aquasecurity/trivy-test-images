@@ -5,39 +5,6 @@ if !(type "crane" > /dev/null 2>&1); then
   go install github.com/google/go-containerregistry/cmd/crane@latest
 fi
 
-TEST_IMAGE=ghcr.io/aquasecurity/trivy-test-images
-
-
-cat <<EOS
-
-#############################
-Spring4Shell (CVE-2022-22965)
-#############################
-
-EOS
-
-docker build --target jre11 -t ${TEST_IMAGE}:spring4shell-jre11 spring4shell
-docker push ${TEST_IMAGE}:spring4shell-jre11
-docker rmi -f ${TEST_IMAGE}:spring4shell-jre11
-
-docker build --target jre8 -t ${TEST_IMAGE}:spring4shell-jre8 spring4shell
-docker push ${TEST_IMAGE}:spring4shell-jre8
-docker rmi -f ${TEST_IMAGE}:spring4shell-jre8
-
-
-cat <<EOS
-
-##########
-containerd
-##########
-
-EOS
-
-docker build -t ${TEST_IMAGE}/containerd:latest containerd
-docker push ${TEST_IMAGE}/containerd:latest
-docker rmi -f ${TEST_IMAGE}/containerd:latest
-
-
 cat <<EOS
 
 ######################
@@ -80,20 +47,6 @@ ghcr.io/distroless/git:20220412
 EOS
 
 crane copy ghcr.io/distroless/git@sha256:107c3bcf9a5d92c88e1085cb949d247ebe95cfbf6235d4a4307d129d2874de71 ${TEST_IMAGE}:alpine-distroless
-
-
-cat <<EOS
-
-####################
-busybox + Cargo.lock
-####################
-
-EOS
-
-docker build -t ${TEST_IMAGE}:busybox-with-lockfile busybox-with-lockfile
-docker push ${TEST_IMAGE}:busybox-with-lockfile
-docker rmi -f ${TEST_IMAGE}:busybox-with-lockfile
-
 
 cat <<EOS
 
