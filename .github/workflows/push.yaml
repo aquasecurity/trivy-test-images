@@ -38,7 +38,7 @@ jobs:
             spring4shell:
               - 'spring4shell/**'
             crane-images:
-              - push-crane-images.sh
+              - copy-images.sh
 
       - name: Push `busybox-with-lockfile` image
         if: steps.changed-files-yaml.outputs.busybox_any_changed == 'true'
