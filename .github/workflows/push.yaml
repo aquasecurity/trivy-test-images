@@ -1,40 +1,28 @@
-name: push
+name: Push and Copy Images
 
 on:
   push:
     branches:
       - master
+  workflow_dispatch:
+
+env:
+  TEST_IMAGE: 'ghcr.io/${{ github.repository_owner }}/trivy-test-images' # used in Makefile
+  GH_USER: "aqua-bot"
 
 jobs:
   push_images:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        registry: [ghcr.io, public.ecr.aws]
-    env:
-      GH_USER: "aqua-bot"
-
+    name: Push images to GHCR
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set TEST_IMAGE variable for Makefile
-        run: echo "TEST_IMAGE=${{ matrix.registry }}/${{ github.repository_owner }}/trivy-test-images" >> $GITHUB_ENV
-
       - name: Login to GHCR
-        if: matrix.registry == 'ghcr.io'
-        uses: docker/login-action@v2
+        uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ env.GH_USER }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Login to ECR Public
-        if: matrix.registry == 'public.ecr.aws'
-        uses: docker/login-action@v3
-        with:
-          registry: public.ecr.aws
-          username: ${{ secrets.ECR_ACCESS_KEY_ID }}
-          password: ${{ secrets.ECR_SECRET_ACCESS_KEY }}
 
       - name: Setup Go
         uses: actions/setup-go@v4
@@ -68,3 +56,36 @@ jobs:
       - name: Copy images
         if: steps.changed-files-yaml.outputs.crane-images_any_changed == 'true'
         run: make copy-images
+
+  copy_to_ecr:
+    runs-on: ubuntu-latest
+    name: Copy images from GHCR to ECR Public
+    needs: push_images
+    env:
+      ECR_REPO: 'public.ecr.aws/${{ github.repository_owner }}/trivy-test-images'
+    steps:
+      - name: Install crane
+        run: |
+          curl -LO https://github.com/google/go-containerregistry/releases/latest/download/go-containerregistry_Linux_x86_64.tar.gz
+          tar xzvf go-containerregistry_Linux_x86_64.tar.gz crane
+          sudo mv crane /usr/local/bin/
+
+      - name: Login to ECR Public
+        uses: docker/login-action@v3
+        with:
+          registry: public.ecr.aws
+          username: ${{ secrets.ECR_ACCESS_KEY_ID }}
+          password: ${{ secrets.ECR_SECRET_ACCESS_KEY }}
+
+      - name: Copy images to ECR Public
+        env:
+          GHCR_REPO: ${{ env.TEST_IMAGE }}
+          ECR_REPO: ${{ env.ECR_REPO }}
+        run: |
+          # Get list of tags from GHCR
+          TAGS=$(crane ls $$GHCR_REPO)
+
+          for TAG in $TAGS; do
+            echo "Copying tag $TAG from GHCR to ECR Public"
+            crane copy $GHCR_REPO:$TAG $ECR_REPO:$TAG
+          done
