@@ -80,10 +80,9 @@ jobs:
       - name: Copy images to ECR Public
         env:
           GHCR_REPO: ${{ env.TEST_IMAGE }}
-          ECR_REPO: ${{ env.ECR_REPO }}
         run: |
           # Get list of tags from GHCR
-          TAGS=$(crane ls $$GHCR_REPO)
+          TAGS=$(crane ls $GHCR_REPO)
 
           for TAG in $TAGS; do
             echo "Copying tag $TAG from GHCR to ECR Public"
