@@ -88,3 +88,5 @@ jobs:
             echo "Copying tag $TAG from GHCR to ECR Public"
             crane copy $GHCR_REPO:$TAG $ECR_REPO:$TAG
           done
+          
+          crane copy $GHCR_REPO/containerd:latest $ECR_REPO/containerd:latest
