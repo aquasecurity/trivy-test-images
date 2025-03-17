@@ -16,6 +16,8 @@ jobs:
     name: Push images to GHCR
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch complete history to accurately detect changed files
 
       - name: Login to GHCR
         uses: docker/login-action@v3
@@ -27,34 +29,49 @@ jobs:
       - name: Setup Go
         uses: actions/setup-go@v4
 
-      - name: Get changed files
-        id: changed-files-yaml
-        uses: tj-actions/changed-files@v37
-        with:
-          files_yaml: |
-            busybox:
-              - 'busybox-with-lockfile/**'
-            containerd:
-              - 'containerd/**'
-            spring4shell:
-              - 'spring4shell/**'
-            crane-images:
-              - copy-images.sh
+      - name: Detect changed files
+        id: changed-files
+        run: |
+          # Detect changes from previous commit
+          if [[ "${{ github.event_name }}" == "push" ]]; then
+            # For push events, get diff between before and after commits
+            echo "Detecting changes between ${{ github.event.before }} and ${{ github.event.after }}"
+            CHANGED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} || git diff --name-only HEAD~1 HEAD)
+          else
+            # For workflow_dispatch events, get diff between latest commit and its parent
+            echo "Detecting changes in the latest commit"
+            CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          fi
+          
+          # Initialize all flags to false
+          echo "busybox_changed=false" >> $GITHUB_OUTPUT
+          echo "containerd_changed=false" >> $GITHUB_OUTPUT
+          echo "spring4shell_changed=false" >> $GITHUB_OUTPUT
+          echo "crane_images_changed=false" >> $GITHUB_OUTPUT
+          
+          # Set flags to true only if changes are detected with exact path matching
+          echo "$CHANGED_FILES" | grep -q "^busybox-with-lockfile/" && echo "busybox_changed=true" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" | grep -q "^containerd/" && echo "containerd_changed=true" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" | grep -q "^spring4shell/" && echo "spring4shell_changed=true" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" | grep -q "^copy-images.sh$" && echo "crane_images_changed=true" >> $GITHUB_OUTPUT
+          
+          echo "Changed files:"
+          echo "$CHANGED_FILES"
 
       - name: Push `busybox-with-lockfile` image
-        if: steps.changed-files-yaml.outputs.busybox_any_changed == 'true'
+        if: steps.changed-files.outputs.busybox_changed == 'true'
         run: make build-busybox
 
       - name: Push `containerd` image
-        if: steps.changed-files-yaml.outputs.containerd_any_changed == 'true'
+        if: steps.changed-files.outputs.containerd_changed == 'true'
         run: make build-containerd
 
       - name: Push `spring4shell` image
-        if: steps.changed-files-yaml.outputs.spring4shell_any_changed == 'true'
+        if: steps.changed-files.outputs.spring4shell_changed == 'true'
         run: make build-spring4shell
 
       - name: Copy images
-        if: steps.changed-files-yaml.outputs.crane-images_any_changed == 'true'
+        if: steps.changed-files.outputs.crane_images_changed == 'true'
         run: make copy-images
 
   copy_to_ecr:
