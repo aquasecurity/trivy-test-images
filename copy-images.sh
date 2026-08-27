@@ -287,3 +287,13 @@ sle-micro-rancher-5.4: registry.suse.com/suse/sle-micro-rancher/5.4@sha256:62848
 EOS
 
 crane copy registry.suse.com/suse/sle-micro-rancher/5.4@sha256:62848d4b4dd02a23d19e35b243ff469b07d83ea3f0c3efb352f27cee624b37e0 ${TEST_IMAGE}:sle-micro-rancher-5.4_ndb
+
+cat <<EOS
+
+##########################################################
+rapidfort-ubuntu-2204: quay.io/rapidfort/rf-advisory/test3
+##########################################################
+
+EOS
+
+crane copy quay.io/rapidfort/rf-advisory/test3@sha256:6edb04f30a3a7e774bc7ab22a9fb10db7674cfa2c9359f8cabe3e60783fe88a6 ${TEST_IMAGE}:rapidfort-ubuntu-2204
