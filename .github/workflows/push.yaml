@@ -46,12 +46,14 @@ jobs:
           # Initialize all flags to false
           echo "busybox_changed=false" >> $GITHUB_OUTPUT
           echo "containerd_changed=false" >> $GITHUB_OUTPUT
+          echo "crypto_changed=false" >> $GITHUB_OUTPUT
           echo "spring4shell_changed=false" >> $GITHUB_OUTPUT
           echo "crane_images_changed=false" >> $GITHUB_OUTPUT
           
           # Set flags to true only if changes are detected with exact path matching
           echo "$CHANGED_FILES" | grep -q "^busybox-with-lockfile/" && echo "busybox_changed=true" >> $GITHUB_OUTPUT
           echo "$CHANGED_FILES" | grep -q "^containerd/" && echo "containerd_changed=true" >> $GITHUB_OUTPUT
+          echo "$CHANGED_FILES" | grep -q "^crypto/" && echo "crypto_changed=true" >> $GITHUB_OUTPUT
           echo "$CHANGED_FILES" | grep -q "^spring4shell/" && echo "spring4shell_changed=true" >> $GITHUB_OUTPUT
           echo "$CHANGED_FILES" | grep -q "^copy-images.sh$" && echo "crane_images_changed=true" >> $GITHUB_OUTPUT
           
@@ -65,6 +67,10 @@ jobs:
       - name: Push `containerd` image
         if: steps.changed-files.outputs.containerd_changed == 'true'
         run: make build-containerd
+
+      - name: Push `crypto` image
+        if: steps.changed-files.outputs.crypto_changed == 'true'
+        run: make build-crypto
 
       - name: Push `spring4shell` image
         if: steps.changed-files.outputs.spring4shell_changed == 'true'
