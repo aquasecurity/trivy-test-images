@@ -121,11 +121,18 @@ openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-256 -sha1 -noenc -set_
 	-subj "/CN=ecdsa-sha1.trivy.test" \
 	-keyout /tmp/ecdsa-sha1.key -out etc/ssl/certs/ecdsa-sha1.pem
 
-# RSA-PSS with SHA-1, where the hash is in the signature parameters.
+# RSA-PSS with SHA-1. SHA-1 and a 20-byte salt are the RSASSA-PSS-params defaults,
+# so the parameters are an empty SEQUENCE and the hash is implicit.
 openssl req -x509 -newkey rsa:2048 -sha1 -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:20 \
 	-noenc -set_serial 10 $validity \
 	-subj "/CN=rsa-pss-sha1.trivy.test" \
 	-keyout /tmp/rsa-pss-sha1.key -out etc/ssl/certs/rsa-pss-sha1.pem
+
+# RSA-PSS with SHA-256, where the hash is written in the signature parameters.
+openssl req -x509 -newkey rsa:2048 -sha256 -sigopt rsa_padding_mode:pss -sigopt rsa_pss_saltlen:32 \
+	-noenc -set_serial 14 $validity \
+	-subj "/CN=rsa-pss-sha256.trivy.test" \
+	-keyout /tmp/rsa-pss-sha256.key -out etc/ssl/certs/rsa-pss-sha256.pem
 
 # P-192, which crypto/x509 does not support, as a certificate, a PKIX key and a SEC1 key.
 openssl req -x509 -newkey ec -pkeyopt ec_paramgen_curve:P-192 -sha256 -noenc -set_serial 11 $validity \

@@ -11,7 +11,7 @@ mkdir -p opt/java/jdk-8/jre/lib/security
 # certificate.
 keytool -genkeypair -storetype JKS -keystore opt/app/app.jks -storepass changeit -keypass changeit \
 	-alias app -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -dname "CN=jks.trivy.test" \
-	-startdate 2024/01/01 -validity 3653
+	-startdate "2024/01/01 00:00:00" -validity 3653
 keytool -importcert -noprompt -storetype JKS -keystore opt/app/app.jks -storepass changeit \
 	-alias rsa -file etc/ssl/certs/rsa.pem
 

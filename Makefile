@@ -12,10 +12,15 @@ build-containerd:
 	docker push $(TEST_IMAGE)/containerd:latest
 	docker rmi -f $(TEST_IMAGE)/containerd:latest
 
+# CI pushes the crypto image on every change under crypto/, and gen.sh creates new keys on
+# every run. Trivy golden files depend on the keys of a published tag, so regenerated material
+# needs a new tag.
+CRYPTO_TAG := crypto-v2
+
 build-crypto:
-	docker build -t $(TEST_IMAGE):crypto-v2 crypto
-	docker push $(TEST_IMAGE):crypto-v2
-	docker rmi -f $(TEST_IMAGE):crypto-v2
+	docker build -t $(TEST_IMAGE):$(CRYPTO_TAG) crypto
+	docker push $(TEST_IMAGE):$(CRYPTO_TAG)
+	docker rmi -f $(TEST_IMAGE):$(CRYPTO_TAG)
 
 gen-crypto:
 	docker run --rm -v "$(CURDIR)/crypto:/work" -w /work --entrypoint sh alpine/openssl:3.5.4 gen.sh
