@@ -13,12 +13,13 @@ build-containerd:
 	docker rmi -f $(TEST_IMAGE)/containerd:latest
 
 build-crypto:
-	docker build -t $(TEST_IMAGE):crypto crypto
-	docker push $(TEST_IMAGE):crypto
-	docker rmi -f $(TEST_IMAGE):crypto
+	docker build -t $(TEST_IMAGE):crypto-v2 crypto
+	docker push $(TEST_IMAGE):crypto-v2
+	docker rmi -f $(TEST_IMAGE):crypto-v2
 
 gen-crypto:
 	docker run --rm -v "$(CURDIR)/crypto:/work" -w /work --entrypoint sh alpine/openssl:3.5.4 gen.sh
+	docker run --rm -v "$(CURDIR)/crypto:/work" -w /work --entrypoint sh eclipse-temurin:21.0.12.1_1-jre-alpine gen-jks.sh
 
 build-spring4shell:
 	docker build --target jre11 -t $(TEST_IMAGE):spring4shell-jre11 spring4shell
