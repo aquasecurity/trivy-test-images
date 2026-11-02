@@ -5,6 +5,7 @@ set -eu
 
 cd "$(dirname "$0")/rootfs"
 
+rm -f opt/app/app.jks opt/app/truststore.keystore opt/java/jdk-8/jre/lib/security/cacerts
 mkdir -p opt/java/jdk-8/jre/lib/security
 
 # A JKS keystore with a private key entry, encrypted with the key password, and trusted
@@ -15,7 +16,7 @@ keytool -genkeypair -storetype JKS -keystore opt/app/app.jks -storepass changeit
 keytool -importcert -noprompt -storetype JKS -keystore opt/app/app.jks -storepass changeit \
 	-alias rsa -file etc/ssl/certs/rsa.pem
 
-# The weak certificate, so that the checks cover certificates from a JKS keystore.
+# The weak and expired certificate, so that the checks cover such certificates from a JKS keystore.
 keytool -importcert -noprompt -storetype JKS -keystore opt/app/app.jks -storepass changeit \
 	-alias weak -file opt/app/weak.pem
 
