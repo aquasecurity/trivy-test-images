@@ -170,6 +170,10 @@ openssl pkcs12 -export -in /tmp/ec.pem -inkey /tmp/ec.key -passout pass:trivy \
 openssl pkcs12 -export -in etc/ssl/certs/rsa.pem -inkey etc/ssl/private/rsa.key -certpbe NONE \
 	-passout pass:trivy -out opt/app/app.pfx
 
+# A PKCS#12 file with the weak certificate and its private key, both stored without encryption.
+openssl pkcs12 -export -in opt/app/weak.pem -inkey etc/ssl/private/weak.key -certpbe NONE -keypbe NONE \
+	-passout pass:trivy -out opt/app/plain.p12
+
 # cacerts of JDK 18 and later, a PKCS#12 file without a password whose certificates are
 # marked as trusted.
 cat /tmp/ca.pem /tmp/ec.pem > /tmp/cacerts.pem

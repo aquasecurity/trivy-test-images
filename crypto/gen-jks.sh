@@ -7,13 +7,17 @@ cd "$(dirname "$0")/rootfs"
 
 mkdir -p opt/java/jdk-8/jre/lib/security
 
-# A JKS keystore with a private key entry, encrypted with the key password, and a trusted
-# certificate.
+# A JKS keystore with a private key entry, encrypted with the key password, and trusted
+# certificates.
 keytool -genkeypair -storetype JKS -keystore opt/app/app.jks -storepass changeit -keypass changeit \
 	-alias app -keyalg RSA -keysize 2048 -sigalg SHA256withRSA -dname "CN=jks.trivy.test" \
 	-startdate "2024/01/01 00:00:00" -validity 3653
 keytool -importcert -noprompt -storetype JKS -keystore opt/app/app.jks -storepass changeit \
 	-alias rsa -file etc/ssl/certs/rsa.pem
+
+# The weak certificate, so that the checks cover certificates from a JKS keystore.
+keytool -importcert -noprompt -storetype JKS -keystore opt/app/app.jks -storepass changeit \
+	-alias weak -file opt/app/weak.pem
 
 # A JKS trust store with the .keystore extension.
 keytool -importcert -noprompt -storetype JKS -keystore opt/app/truststore.keystore -storepass changeit \
