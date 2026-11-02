@@ -15,7 +15,7 @@ build-containerd:
 # CI pushes the crypto image on every change under crypto/, and gen.sh creates new keys on
 # every run. Trivy golden files depend on the keys of a published tag, so regenerated material
 # needs a new tag.
-CRYPTO_TAG := crypto-v2
+CRYPTO_TAG := crypto-v3
 
 build-crypto:
 	docker build -t $(TEST_IMAGE):$(CRYPTO_TAG) crypto
